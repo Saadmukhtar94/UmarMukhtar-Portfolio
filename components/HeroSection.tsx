@@ -258,7 +258,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div style={{
+      {/* <div style={{
         position: 'absolute', bottom: '2rem', left: '50%',
         transform:'translateX(-50%)',
         display:  'flex', flexDirection: 'column', alignItems: 'center', gap: '6px',
@@ -271,7 +271,7 @@ export default function HeroSection() {
           background: 'linear-gradient(180deg, #4488ff, transparent)',
           animation: 'scrollPulse 2s ease-in-out infinite',
         }} />
-      </div>
+      </div> */}
 
       <style>{`
         @keyframes pulse {
