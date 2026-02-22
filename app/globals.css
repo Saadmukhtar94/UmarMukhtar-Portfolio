@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+:root {
+  --bg: #04070f;
+  --surface: #0b1120;
+  --border: #1a2540;
+  --cyan: #00e5ff;
+  --blue: #4488ff;
+  --purple: #7c3aed;
+  --muted: #6b7a99;
+  --light: #c8d4f0;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--light);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* Custom scrollbar — thin, matches the dark palette */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* Gradient text utility used on all section headings */
+.gradient-text {
+  background: linear-gradient(90deg, #4488ff 0%, #00e5ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section divider line — thin horizontal rule */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+  margin-bottom: 3rem;
+}
+
+/* Subtle dot-grid background texture for depth */
+.dot-grid {
+  background-image: radial-gradient(circle, #1a2540 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Timeline vertical line */
+.timeline-line {
+  width: 2px;
+  background: linear-gradient(180deg, #4488ff33 0%, #00e5ff55 100%);
+}
+
+/* Cards with subtle border and hover glow */
+.glass-card {
+  background: linear-gradient(135deg, #0d1628 0%, #091020 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 1s ease, box-shadow 1s ease;
+}
+.glass-card:hover {
+  border-color: #60e4fb;
+  border: solid #60e4fb;
+ box-shadow: 0 0 10px #60e4fb;  /* already there — increase if you want stronger */
+}
+
+/* Tech badge pill */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--muted);
+  background: #0d1628;
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* Skill check item */
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--light);
+}
+
+/* Service feature arrow item */
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
