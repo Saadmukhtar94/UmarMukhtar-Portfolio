@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUpwork, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 /* ── Small info card used in the right column ──────────────────────── */
 function InfoCard({
@@ -53,10 +55,16 @@ const inputStyle: React.CSSProperties = {
   transition:      'border-color 0.2s',
 }
 
+/* ── Social links data ──────────────────────────────────────────────── */
+const socials = [
+  { label: 'Upwork',   icon: faUpwork,   href: 'https://www.upwork.com/freelancers/muhammadumarm5?mp_source=share' },
+  { label: 'LinkedIn', icon: faLinkedin, href: 'https://www.linkedin.com/in/muhammad-umar-052373397/' },
+]
+
 /* ── Main section ───────────────────────────────────────────────────── */
 export default function ContactSection() {
-  const [form, setForm]     = useState({ name: '', email: '', subject: '', message: '' })
-  const [sent, setSent]     = useState(false)
+  const [form,    setForm]    = useState({ name: '', email: '', subject: '', message: '' })
+  const [sent,    setSent]    = useState(false)
   const [focused, setFocused] = useState<string | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -64,7 +72,6 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // In production wire up to an API route / email service
     console.log('Contact form submitted:', form)
     setSent(true)
     setTimeout(() => setSent(false), 4000)
@@ -102,8 +109,8 @@ export default function ContactSection() {
             fontSize:     'clamp(1.8rem, 4vw, 2.8rem)',
             background:   'linear-gradient(90deg, #4488ff 0%, #00e5ff 100%)',
             WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            letterSpacing:'-0.02em',
+            WebkitTextFillColor:  'transparent',
+            letterSpacing: '-0.02em',
           }}>
             Get In Touch
           </h2>
@@ -161,7 +168,9 @@ export default function ContactSection() {
 
               {/* Subject */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#6b7a99', marginBottom: '6px', letterSpacing: '0.05em' }}>Subject</label>
+                <label style={{ display: 'block', fontSize: '0.75rem', color: '#6b7a99', marginBottom: '6px', letterSpacing: '0.05em' }}>
+                  Subject
+                </label>
                 <input
                   type="text"
                   name="subject"
@@ -180,7 +189,9 @@ export default function ContactSection() {
 
               {/* Message */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#6b7a99', marginBottom: '6px', letterSpacing: '0.05em' }}>Message</label>
+                <label style={{ display: 'block', fontSize: '0.75rem', color: '#6b7a99', marginBottom: '6px', letterSpacing: '0.05em' }}>
+                  Message
+                </label>
                 <textarea
                   name="message"
                   value={form.message}
@@ -245,48 +256,59 @@ export default function ContactSection() {
               </p>
             </div>
 
-            <InfoCard icon="📧" label="Email"    value="umar.mukhtar90@gmail.com"      href="mailto:umar.mukhtar90@gmail.com" />
-            <InfoCard icon="📍" label="Location" value="Lahore, Pakistan"                                             />
-            <InfoCard icon="💼" label="Status"   value="Available for projects"                                       />
+            <InfoCard icon="📧" label="Email"    value="umar.mukhtar90@gmail.com" href="mailto:umar.mukhtar90@gmail.com" />
+            <InfoCard icon="📍" label="Location" value="Lahore, Pakistan" />
+            <InfoCard icon="💼" label="Status"   value="Available for projects" />
 
-            {/* Social links */}
+            {/* ── Social links ── */}
             <div style={{ marginTop: '0.5rem' }}>
-              <p style={{ fontSize: '0.75rem', color: '#6b7a99', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: '0.75rem' }}>
+              <p style={{
+                fontSize:      '0.75rem',
+                color:         '#6b7a99',
+                textTransform: 'uppercase',
+                letterSpacing: '0.07em',
+                marginBottom:  '0.75rem',
+              }}>
                 Social
               </p>
+
               <div style={{ display: 'flex', gap: '0.75rem' }}>
-                {[
-                  { label: 'GitHub',   icon: '🐙', href: '#' },
-                  { label: 'LinkedIn', icon: '💼', href: '#' },
-                  { label: 'Twitter',  icon: '🐦', href: '#' },
-                ].map(s => (
-                  <a
+                {socials.map(s => (
+                                  <a
+
                     key={s.label}
                     href={s.href}
                     title={s.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
-                      width:         '42px',
-                      height:        '42px',
-                      borderRadius:  '10px',
-                      border:        '1px solid #1a2540',
-                      background:    '#0b1120',
-                      display:       'flex',
-                      alignItems:    'center',
-                      justifyContent:'center',
-                      fontSize:      '1.1rem',
-                      textDecoration:'none',
-                      transition:    'border-color 0.2s, background 0.2s',
+                      width:          '42px',
+                      height:         '42px',
+                      borderRadius:   '10px',
+                      border:         '1px solid #1a2540',
+                      background:     '#0b1120',
+                      display:        'flex',
+                      alignItems:     'center',
+                      justifyContent: 'center',
+                      textDecoration: 'none',
+                      transition:     'border-color 0.2s, background 0.2s, box-shadow 0.2s',
                     }}
                     onMouseEnter={e => {
                       ;(e.currentTarget as HTMLAnchorElement).style.borderColor = '#00e5ff55'
                       ;(e.currentTarget as HTMLAnchorElement).style.background  = '#00e5ff0d'
+                      ;(e.currentTarget as HTMLAnchorElement).style.boxShadow   = '0 0 12px #00e5ff33'
                     }}
                     onMouseLeave={e => {
                       ;(e.currentTarget as HTMLAnchorElement).style.borderColor = '#1a2540'
                       ;(e.currentTarget as HTMLAnchorElement).style.background  = '#0b1120'
+                      ;(e.currentTarget as HTMLAnchorElement).style.boxShadow   = 'none'
                     }}
                   >
-                    {s.icon}
+                    <FontAwesomeIcon
+                      icon={s.icon}
+                      style={{ width: '18px', height: '18px', color: '#6b7a99' }}
+                    />
+
                   </a>
                 ))}
               </div>

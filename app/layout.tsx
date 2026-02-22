@@ -18,6 +18,9 @@ export default function RootLayout({
         We load Google Fonts in globals.css via @import.
         The <head> here is kept minimal.
       */}
+      <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+      </head>
       <body style={{ fontFamily: "'DM Sans', sans-serif" }}>
         {children}
       </body>
