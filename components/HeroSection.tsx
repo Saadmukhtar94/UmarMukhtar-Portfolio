@@ -232,7 +232,7 @@ export default function HeroSection() {
           flexWrap:      'wrap',
         }}>
           {[
-            { value: '4+',  label: 'Years Experience' },
+            { value: '7+',  label: 'Years Experience' },
             { value: '14+', label: 'Games Shipped'    },
             { value: '3',   label: 'Top Publishers'   },
           ].map(stat => (
