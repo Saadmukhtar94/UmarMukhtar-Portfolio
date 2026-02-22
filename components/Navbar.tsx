@@ -63,7 +63,7 @@ export default function Navbar() {
           WebkitTextFillColor:  'transparent',
           letterSpacing: '-0.02em',
         }}>
-          Ahmed<span style={{ WebkitTextFillColor: '#c8d4f0', fontWeight: 400 }}>.dev</span>
+          Umar Mukhtar<span style={{ WebkitTextFillColor: '#c8d4f0', fontWeight: 400 }}>.online</span>
         </span>
       </a>
 
